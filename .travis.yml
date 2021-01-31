@@ -5,20 +5,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t paperplanemove/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t alekseysoroka/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true paperplanemove/react-test npm test
+  - docker run -e CI=true alekseysoroka/react-test npm test
 
 after_success:
-  - docker build -t paperplanemove/multi-client ./client
-  - docker build -t paperplanemove/multi-nginx ./nginx
-  - docker build -t paperplanemove/multi-server ./server
-  - docker build -t paperplanemove/multi-worker ./worker
+  - docker build -t alekseysoroka/multi-client ./client
+  - docker build -t alekseysoroka/multi-nginx ./nginx
+  - docker build -t alekseysoroka/multi-server ./server
+  - docker build -t alekseysoroka/multi-worker ./worker
   # Log in to the docker CLI, $DOCKER_ID and $DOCKER_PASSWORD are entered in travis-ci.com as Environment variables
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push paperplanemove/multi-client
-  - docker push paperplanemove/multi-nginx
-  - docker push paperplanemove/multi-server
-  - docker push paperplanemove/multi-worker
+  - docker push alekseysoroka/multi-client
+  - docker push alekseysoroka/multi-nginx
+  - docker push alekseysoroka/multi-server
+  - docker push alekseysoroka/multi-worker
