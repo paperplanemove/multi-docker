@@ -6,21 +6,21 @@
       "image": "alekseysoroka/multi-client",
       "hostname": "client",
       "essential": false,
-      "memory": 256
+      "memory": 64
     },
     {
       "name": "server",
       "image": "alekseysoroka/multi-server",
       "hostname": "api",
       "essential": false,
-      "memory": 256
+      "memory": 64
     },
     {
       "name": "worker",
       "image": "alekseysoroka/multi-worker",
       "hostname": "worker",
       "essential": false,
-      "memory": 256
+      "memory": 64
     },
     {
       "name": "nginx",
@@ -34,7 +34,7 @@
         }
       ],
       "links": ["client", "server"],
-      "memory": 256
+      "memory": 64
     }
   ]
 }
