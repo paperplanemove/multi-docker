@@ -7,6 +7,9 @@ services:
   redis:
     image: 'redis:latest'
   nginx:
+    depends_on:
+      - api
+      - client
     restart: always
     build:
       dockerfile: Dockerfile.dev
@@ -46,17 +49,3 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-
-# When in prod these are set as environment variables in Elastic beanstalk -> configuration -> software -> environment variables
-# environment:
-# - REDIS_HOST=redis
-# - REDIS_PORT=6379
-# - PGUSER=postgres
-# - PGHOST=postgres
-# - PGDATABASE=postgres
-# - PGPASSWORD=postgres_password
-# - PGPORT=5432
-
-
-
-
